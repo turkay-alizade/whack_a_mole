@@ -1,0 +1,136 @@
+@mobile: ~"only screen and (max-width: 529px)";
+.absolute(@top,@right,@bottom,@left){
+    position: absolute;
+    top: @top;
+    right: @right;
+    bottom: @bottom;
+    left: @left;
+}
+.fixed(@top,@right,@bottom,@left){
+    position: fixed;
+    top: @top;
+    right: @right;
+    bottom: @bottom;
+    left: @left;
+}
+.grid() {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+}
+.flex() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Architects Daughter', cursive;
+    user-select:none;
+    -webkit-user-select:none;
+}
+body{
+    background-color: #4DAC64 ;
+    height: 100vh;
+    .flex();
+}
+h1{
+    font-size:45px;
+    font-family: 'Shadows Into Light', cursive;
+    text-align: center;
+}
+.header{
+    display:flex;
+    h3{
+        margin-top:10px;
+        &:not(:last-child){
+            margin-right:100px;
+        }
+    }
+    .timer{
+        animation: animate 0.4s infinite;
+        -webkit-animation: animate 0.4s infinite;
+        transition: 0.5s;
+    }
+    @keyframes animate{
+        from{
+            color: red;
+        }
+        to{
+            color:black;
+        }
+    }
+}
+.game-area{
+    cursor: url(../images/img3.png), auto;
+    .grid();
+    margin:auto;
+    width:50%;
+    div{
+        padding-top:70px;
+        position: relative;
+        &::before{
+            content: '';
+            .absolute(70px,0px,5px,5px);
+            width: 90%;
+            background-image:  url('../images/img-2.png');
+            background-size: 100% 100%;
+            z-index:-1;
+            transition: 0.8s;
+        }
+        img{
+            width: 100%;
+        }
+    }
+    .active::before{
+        top: 0px;
+    }
+}
+button{
+    font-weight: 600;
+    font-size: 18px;
+    background-color: #CACFD2;
+    margin-bottom:20px;
+    border:none;
+    cursor: pointer;
+    padding: 7px 35px;  
+    transition: 0.7s;
+    &:focus{
+        outline: none;
+    }
+    &:hover{
+        background-color:darken(#CACFD2, 10%);
+    }
+}  
+@media (max-width:870px){
+    .game-area{
+        width: 80%;
+    }
+}
+@media @mobile{
+    .game-area{
+        width: 100%;
+    }
+    h1{
+        font-size:40px;
+    }
+    .header h3:not(:last-child){
+        margin-right: 20px;
+    }
+}
+.start{
+    .fixed(0,0,0,0);
+    background: rgba(0,0,0,0.6);
+    z-index:100;
+    transition: 0.5s;
+    div{
+        .flex();
+        height: 100vh;
+        button{
+            margin-top:30px;
+        }
+    }
+}

@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Architects Daughter', cursive;
+  user-select: none;
+  -webkit-user-select: none;
+}
+body {
+  background-color: #4DAC64 ;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+h1 {
+  font-size: 45px;
+  font-family: 'Shadows Into Light', cursive;
+  text-align: center;
+}
+.header {
+  display: flex;
+}
+.header h3 {
+  margin-top: 10px;
+}
+.header h3:not(:last-child) {
+  margin-right: 100px;
+}
+.header .timer {
+  animation: animate 0.4s infinite;
+  -webkit-animation: animate 0.4s infinite;
+  transition: 0.5s;
+}
+@keyframes animate {
+  from {
+    color: red;
+  }
+  to {
+    color: black;
+  }
+}
+.game-area {
+  cursor: url(../images/img3.png), auto;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto;
+  width: 50%;
+}
+.game-area div {
+  padding-top: 70px;
+  position: relative;
+}
+.game-area div::before {
+  content: '';
+  position: absolute;
+  top: 70px;
+  right: 0px;
+  bottom: 5px;
+  left: 5px;
+  width: 90%;
+  background-image: url('../images/img-2.png');
+  background-size: 100% 100%;
+  z-index: -1;
+  transition: 0.8s;
+}
+.game-area div img {
+  width: 100%;
+}
+.game-area .active::before {
+  top: 0px;
+}
+button {
+  font-weight: 600;
+  font-size: 18px;
+  background-color: #CACFD2;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 7px 35px;
+  transition: 0.7s;
+}
+button:focus {
+  outline: none;
+}
+button:hover {
+  background-color: #aeb6bb;
+}
+@media (max-width: 870px) {
+  .game-area {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 529px) {
+  .game-area {
+    width: 100%;
+  }
+  h1 {
+    font-size: 40px;
+  }
+  .header h3:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+.start {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  transition: 0.5s;
+}
+.start div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.start div button {
+  margin-top: 30px;
+}
